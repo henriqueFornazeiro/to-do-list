@@ -3,7 +3,6 @@ const Task = require("../model/Task");
 const getIndex = async (req, res) => {
   try {
     const taskList = await Task.find();
-    console.log(taskList);
     return res.render("index", { taskList, task: null, taskDelete: null });
   } catch (err) {
     res.status(500).send({ error: err.message });
