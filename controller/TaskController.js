@@ -5,11 +5,10 @@ let type = "";
 
 const getIndex = async (req, res) => {
   try {
+    setTimeout(() => {
+      message = "";
+    }, 1000);
 
-    setTimeout(()=>{
-      message = ""
-    },1000)
-    
     const taskList = await Task.find();
     return res.render("index", {
       taskList,
@@ -81,10 +80,24 @@ const deleteTask = async (req, res) => {
   }
 };
 
+const taskCheck = async (req, res) => {
+  try {
+    const task = await Task.findOne({ _id: req.params.id });
+    
+    task.check ? task.check = false : task.check = true;
+
+    await Task.updateOne({ _id: req.params.id }, task);
+    res.redirect("/");
+  } catch (err) {
+    res.status(500).send({ error: err.message });
+  }
+};
+
 module.exports = {
   getIndex,
   createTask,
   getById,
   updateTask,
   deleteTask,
+  taskCheck,
 };

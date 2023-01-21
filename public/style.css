@@ -83,6 +83,7 @@ ul li:hover {
 ul li a {
   text-decoration: none;
   color: #fff;
+  padding-left: 2rem;
 }
 
 ul li div {
@@ -260,6 +261,36 @@ div#footerModal a#btnYes:hover {
 
 .message #close-message:hover{
   color: rgb(255,0,0);
+}
+
+ul li.check--true{
+  background-color: #888888;
+  color:#fff;
+  text-decoration: line-through;
+
+}
+
+ul li a.check--true::before{
+  content: "";
+  position: absolute;
+  border: solid #fff;
+  top: 25px;
+  left: 16px;
+  height: 15px;
+  width: 7px;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+ul li a.check--false::before{
+  content: "";
+  position: absolute;
+  border: solid #fff;
+  top: 26px;
+  left: 16px;
+  height: 13px;
+  width: 13px;
+  border-width: 2px;
 }
 
 
